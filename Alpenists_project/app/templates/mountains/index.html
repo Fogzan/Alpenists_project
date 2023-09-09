@@ -4,6 +4,73 @@
 <div class="p-5">
     <h1 class="text-center pb-4">Список всех гор</h1>
 
+{% if mountains %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                №
+            </th>
+            <th>
+                Название
+            </th>
+            <th>
+                Автор
+            </th>
+            <th>
+                Жанры
+            </th>
+            <th>
+                Год
+            </th>
+            <th>
+                Количество рецензий
+            </th>
+            <th>
+                Оценка
+            </th>
+            <th>
+                Действие
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for mountain in mountains %}
+        <tr>
+            <td>
+                {{ loop.index }}
+            </td>
+            <td>
+                {{ mountain.name }}
+            </td>
+            <td>
+                кккк
+            </td>
+            <td>
+                кккк
+            </td>
+            <td>
+                кккк
+            </td>
+            <td>
+                кккк
+            </td>
+            <td>
+                кккк
+            </td>
+            <td>
+                Условные действия
+            </td>
+
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% else %}
+<h2 class="p-2">Гор пока нету</h2>
+{% endif %}
+
     <div class="py-2">
         <a class="btn btn-primary" href="">Добавить новую гору</a>
     </div>
