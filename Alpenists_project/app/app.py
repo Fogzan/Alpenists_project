@@ -9,12 +9,6 @@ application = app
 
 app.config.from_pyfile('config.py')
 
-# login_manager = LoginManager()
-# login_manager.init_app(app)
-# login_manager.login_view = 'login'
-# login_manager.login_message = 'Для доступа к этой странице необходимо пройти процедуру аутентификации.'
-# login_manager.login_message_category = 'warning'
-
 # Работа с БД
 convention = {
     "ix": 'ix_%(column_0_label)s',
@@ -31,6 +25,11 @@ migrate = Migrate(app, db)
 
 from mountains import bp as mountains_bp
 app.register_blueprint(mountains_bp)
+from climbers import bp as climbers_bp
+app.register_blueprint(climbers_bp)
+from auth import bp as auth_bp, init_login_manager
+app.register_blueprint(auth_bp)
+init_login_manager(app)
 
 @app.route('/')
 def index():

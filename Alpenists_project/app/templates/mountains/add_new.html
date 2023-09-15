@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="container">
+    <h1 class="py-3 text-center">Добавление новой горы</h1>
+    <form method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="name" class="form-label">Название</label>
+            <input type="text" class="form-control {% if errors.name %}is-invalid{% endif %}" id="name" name="name" 
+            {% if params %}value="{{ params.name }}" {% endif %}>
+            {% if errors.name %}
+            <div id="name1" class="invalid-feedback">
+                {{ errors.name }}
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="mb-3">
+            <label for="height" class="form-label">Высота</label>
+            <input type="text" class="form-control {% if errors.height %}is-invalid{% endif %}" id="height"
+                name="height" {% if params %}value="{{ params.height }}" {% endif %}>
+            {% if errors.height %}
+            <div id="height1" class="invalid-feedback">
+                {{ errors.height }}
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="mb-3">
+            <label for="country" class="form-label">Страна</label>
+            <input type="text" class="form-control {% if errors.country %}is-invalid{% endif %}" id="country"
+                name="country" {% if params %}value="{{ params.country }}" {% endif %}>
+            {% if errors.country %}
+            <div id="country1" class="invalid-feedback">
+                {{ errors.country }}
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="mb-3">
+            <label for="district" class="form-label">Окрестность</label>
+            <input type="text" class="form-control {% if errors.district %}is-invalid{% endif %}" id="district"
+                name="district" {% if params %}value="{{ params.district }}" {% endif %}>
+            {% if errors.district %}
+            <div id="district1" class="invalid-feedback">
+                {{ errors.district }}
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="mb-3 text-center">
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}

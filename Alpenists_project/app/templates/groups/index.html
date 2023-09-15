@@ -2,9 +2,9 @@
 
 {% block content %}
 <div class="p-5">
-    <h1 class="text-center pb-4">Список всех гор</h1>
+    <h1 class="text-center pb-4">Список всех альпенистов</h1>
 
-    {% if mountains %}
+    {% if climbers %}
     <table class="table">
         <thead>
             <tr>
@@ -12,16 +12,10 @@
                     №
                 </th>
                 <th>
-                    Название
+                    Имя
                 </th>
                 <th>
-                    Высота
-                </th>
-                <th>
-                    Страна
-                </th>
-                <th>
-                    Окрестность
+                    Адресс
                 </th>
                 <th>
                     Количество восхождений
@@ -32,25 +26,19 @@
             </tr>
         </thead>
         <tbody>
-            {% for mountain in mountains %}
+            {% for climber in climbers %}
             <tr>
                 <td>
                     {{ loop.index }}
                 </td>
                 <td>
-                    {{ mountain.name }}
+                    {{ climber.fio }}
                 </td>
                 <td>
-                    {{ mountain.height }}
+                    {{ climber.address }}
                 </td>
                 <td>
-                    {{ mountain.coutry }}
-                </td>
-                <td>
-                    {{ mountain.district }}
-                </td>
-                <td>
-                    {{ mountain.get_count_climbing or 0 }}
+                    ккк
                 </td>
                 <td>
                     Условные действия
@@ -62,11 +50,11 @@
     </table>
 
     {% else %}
-    <h2 class="p-2">Гор пока нету</h2>
+    <h2 class="p-2">Альпенистов пока нету</h2>
     {% endif %}
 
     <div class="py-2">
-        <a class="btn btn-primary" href="{{ url_for('mountains.add_new') }}">Добавить новую гору</a>
+        <a class="btn btn-primary" href="{{ url_for('climbers.add_new') }}">Добавить нового альпениста</a>
     </div>
 
 </div>

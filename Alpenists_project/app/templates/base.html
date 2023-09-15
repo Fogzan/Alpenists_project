@@ -12,16 +12,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
 
-    <link rel="icon" href="{{ url_for('static', filename='images/ico.ico') }}" type="image/x-icon">
-
-    <title>Электронная библиотека</title>
+    <title>Альпенизм</title>
 </head>
 
 <body class="d-flex flex-column h-100">
     <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="{{ url_for('mountains.index') }}">
+                <a class="navbar-brand" href="{{ url_for('index') }}">
                     Главная
                 </a>
 
@@ -31,21 +30,20 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse mb-2" id="navbarSupportedContent ms-auto">
-                    <ul class="navbar-nav mb-lg-0">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent ms-auto">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link {% if request.endpoint == 'index' %}active{% endif %}"
-                                aria-current="page" href="{{ url_for('index') }}">Главная</a>
+                            <a class="nav-link {% if request.endpoint == 'mountains.index' %}active{% endif %}" aria-current="page" href="{{ url_for('mountains.index') }}">Горы</a>
                         </li>
-                        <!-- <li class="nav-item">
-                            <a class="nav-link" href="#">Книги</a>
-                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.endpoint == 'climbers.index' %}active{% endif %}" aria-current="page" href="{{ url_for('climbers.index') }}">Альпенисты</a>
+                        </li>
                     </ul>
-                    
+
                     <div class="dropdown ms-auto">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            
+
                         </a>
                         <!-- <ul class="dropdown-menu dropdown-menu-end">
                             
@@ -58,7 +56,7 @@
                             <li><a class="dropdown-item" href="">Выйти</a></li>
                         </ul> -->
                     </div>
-                    
+
                     <!-- <div class="ms-auto">
                         <a class="nav-link {% if request.endpoint == 'login' %}active{% endif %}" aria-current="page"
                             href="">Войти</a>
@@ -67,6 +65,8 @@
                 </div>
             </div>
         </nav>
+
+
     </header>
 
     <div class="alerts-area">
