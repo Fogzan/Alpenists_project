@@ -4,26 +4,15 @@
 
 
 <div class="container">
-    <h1 class="py-3 text-center">Добавление новой горы</h1>
+    <h1 class="py-3 text-center">Добавление новой группы</h1>
     <form method="post" enctype="multipart/form-data">
         <div class="mb-3">
-            <label for="fio" class="form-label">ФИО</label>
-            <input type="text" class="form-control {% if errors.fio %}is-invalid{% endif %}" id="fio" name="fio" 
-            {% if params %}value="{{ params.fio }}" {% endif %}>
-            {% if errors.fio %}
-            <div id="fio1" class="invalid-feedback">
-                {{ errors.fio }}
-            </div>
-            {% endif %}
-        </div>
-
-        <div class="mb-3">
-            <label for="address" class="form-label">Адресс</label>
-            <input type="text" class="form-control {% if errors.address %}is-invalid{% endif %}" id="address"
-                name="address" {% if params %}value="{{ params.address }}" {% endif %}>
-            {% if errors.address %}
-            <div id="address1" class="invalid-feedback">
-                {{ errors.address }}
+            <label for="name" class="form-label">Название группы</label>
+            <input type="text" class="form-control {% if errors.name %}is-invalid{% endif %}" id="name" name="name" 
+            {% if params %}value="{{ params.name }}" {% endif %}>
+            {% if errors.name %}
+            <div id="name1" class="invalid-feedback">
+                {{ errors.name }}
             </div>
             {% endif %}
         </div>

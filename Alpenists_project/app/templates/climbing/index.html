@@ -2,9 +2,9 @@
 
 {% block content %}
 <div class="p-5">
-    <h1 class="text-center pb-4">Список всех групп</h1>
+    <h1 class="text-center pb-4">Список всех восхождений</h1>
 
-    {% if groups %}
+    {% if climbings %}
     <table class="table">
         <thead>
             <tr>
@@ -12,24 +12,30 @@
                     №
                 </th>
                 <th>
-                    Название
+                    Дата начала
                 </th>
                 <th>
-                    Состав
+                    Дата окончания
                 </th>
                 <th>
-                    Действия
+                    Количество восхождений
+                </th>
+                <th>
+                    Действие
                 </th>
             </tr>
         </thead>
         <tbody>
-            {% for group in groups %}
+            {% for climbing in climbings %}
             <tr>
                 <td>
                     {{ loop.index }}
                 </td>
                 <td>
-                    {{ group.name }}
+                    {{ climbing.date_start }}
+                </td>
+                <td>
+                    {{ climbing.date_end }}
                 </td>
                 <td>
                     ккк
@@ -44,11 +50,11 @@
     </table>
 
     {% else %}
-    <h2 class="p-2">Групп пока нету</h2>
+    <h2 class="p-2">Восхождений пока нету</h2>
     {% endif %}
 
     <div class="py-2">
-        <a class="btn btn-primary" href="{{ url_for('groups.add_new') }}">Добавить новую группу</a>
+        <a class="btn btn-primary" href="{{ url_for('climbers.add_new') }}">Добавить новое восхождение</a>
     </div>
 
 </div>

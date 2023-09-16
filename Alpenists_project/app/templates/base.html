@@ -38,6 +38,9 @@
                         <li class="nav-item">
                             <a class="nav-link {% if request.endpoint == 'climbers.index' %}active{% endif %}" aria-current="page" href="{{ url_for('climbers.index') }}">Альпенисты</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.endpoint == 'groups.index' %}active{% endif %}" aria-current="page" href="{{ url_for('groups.index') }}">Группы</a>
+                        </li>
                     </ul>
 
                     <div class="dropdown ms-auto">
