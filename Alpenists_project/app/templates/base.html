@@ -41,24 +41,31 @@
                         <li class="nav-item">
                             <a class="nav-link {% if request.endpoint == 'groups.index' %}active{% endif %}" aria-current="page" href="{{ url_for('groups.index') }}">Группы</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.endpoint == 'climbing.index' %}active{% endif %}" aria-current="page" href="{{ url_for('climbing.index') }}">Восхождения</a>
+                        </li>
                     </ul>
 
+                    {% if current_user.is_authenticated %}
                     <div class="dropdown ms-auto">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-
+                            {{ current_user.login }}
                         </a>
-                        <!-- <ul class="dropdown-menu dropdown-menu-end">
-                            
-                            <li><a class="dropdown-item" href="">Подборка
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            {% if current_user.is_user %}
+                            <li><a class="dropdown-item" href="{{ url_for('compilations.list_compilation') }}">Подборка
                                     книг</a></li>
-                            
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="">Выйти</a></li>
-                        </ul> -->
+                            {% endif %}
+                            <li><a class="dropdown-item" href="{{ url_for('auth.logout') }}">Выйти</a></li>
+                        </ul>
                     </div>
+                    {% else %}
+                    <div class="ms-auto">
+                        <a class="nav-link {% if request.endpoint == 'login' %}active{% endif %}" aria-current="page"
+                            href="{{ url_for('auth.login') }}">Войти</a>
+                    </div>
+                    {% endif %}
 
                     <!-- <div class="ms-auto">
                         <a class="nav-link {% if request.endpoint == 'login' %}active{% endif %}" aria-current="page"

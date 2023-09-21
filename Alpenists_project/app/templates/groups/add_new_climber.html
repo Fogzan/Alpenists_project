@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="container">
+    <h1 class="py-3 text-center">Добавление альпениста к группе {{ groupName }}</h1>
+    <form method="post" enctype="multipart/form-data">
+        <div class="mb-3 {% if errors.group %}border-error{% endif %}">
+            <label for="climbers" class="form-label">Альпенист</label>
+            <select class="form-select" aria-label="Default select example" id="select-climbers" name="select-climbers">
+                <option selected>Выберете альпениста</option>
+                {% for climber in climbers %}
+                <option value="{{ climber.id }}">{{ climber.fio }}</option>
+                {% endfor %}
+            </select>
+            {% if errors.climber %}
+            <div id="climbers1" class="invalid-feedback display-yes" >
+                {{ errors.climber }}
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="mb-3 text-center">
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}

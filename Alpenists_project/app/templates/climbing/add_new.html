@@ -6,54 +6,71 @@
 <div class="container">
     <h1 class="py-3 text-center">Добавление нового восхождения</h1>
     <form method="post" enctype="multipart/form-data">
+
+        {% if typeCreate == "yesGroup" %}
         <div class="mb-3">
-            <label for="fio" class="form-label">Гора</label>
-            <select class="form-select" aria-label="Default select example" id="select-compilation" name="compilations">
+            <label for="name" class="form-label">Название группы</label>
+            <input type="text" class="form-control {% if errors.name %}is-invalid{% endif %}" id="name" name="name" 
+            {% if params %}value="{{ params.name }}" {% endif %}>
+            {% if errors.name %}
+            <div id="name1" class="invalid-feedback">
+                {{ errors.name }}
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+
+
+        <div class="mb-3 {% if errors.group %}border-error{% endif %}">
+            <label for="mountain" class="form-label">Гора</label>
+            <select class="form-select" aria-label="Default select example" id="select-mountain" name="select-mountain">
                 <option selected>Выберете гору</option>
                 {% for mountain in mountains %}
-                <option value="{{ mountain.id }}">{{ mountain.name }}</option>
+                <option value="{{ mountain.id }}" {% if params.mountain == mountain.id %}selected{% endif %}>{{ mountain.name }}</option>
                 {% endfor %}
             </select>
-            {% if errors.fio %}
-            <div id="fio1" class="invalid-feedback">
-                {{ errors.fio }}
+            {% if errors.mountain %}
+            <div id="mountain1" class="invalid-feedback display-yes" >
+                {{ errors.mountain }}
             </div>
             {% endif %}
         </div>
 
-        <div class="mb-3">
-            <label for="address" class="form-label">Группа</label>
-            <select class="form-select" aria-label="Default select example" id="select-compilation" name="compilations">
-                <option selected>Выберете группу</option>
+        {% if typeCreate == "noGroup" %}
+        <div class="mb-3 {% if errors.group %}border-error{% endif %}">
+            <label for="group" class="form-label">Группа</label>
+            <select class="form-select" aria-label="Default select example" id="select-group" name="select-group">
+                <option value="" selected>Выберете группу</option>
                 {% for group in groups %}
-                <option value="{{ group.id }}">{{ group.name }}</option>
+                <option value="{{ group.id }}" {% if params.group == group.id %}selected{% endif %}>{{ group.name }}</option>
                 {% endfor %}
             </select>
-            {% if errors.address %}
-            <div id="address1" class="invalid-feedback">
-                {{ errors.address }}
+            {% if errors.group %}
+            <div id="group1" class="invalid-feedback display-yes">
+                {{ errors.group }}
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        <div class="mb-3">
+            <label for="dateStart" class="form-label">Дата начала восхождения</label>
+            <input type="datetime-local" class="form-control {% if errors.dateStart %}is-invalid{% endif %}" id="dateStart"
+                name="dateStart" {% if params %}value="{{ params.dateStart }}" {% endif %}>
+            {% if errors.dateStart %}
+            <div id="dateStart1" class="invalid-feedback">
+                {{ errors.dateStart }}
             </div>
             {% endif %}
         </div>
 
         <div class="mb-3">
-            <label for="address" class="form-label">Дата начала восхождения</label>
-            <input type="text" class="form-control {% if errors.address %}is-invalid{% endif %}" id="address"
-                name="address" {% if params %}value="{{ params.address }}" {% endif %}>
-            {% if errors.address %}
-            <div id="address1" class="invalid-feedback">
-                {{ errors.address }}
-            </div>
-            {% endif %}
-        </div>
-
-        <div class="mb-3">
-            <label for="address" class="form-label">Дата конца восхождения</label>
-            <input type="text" class="form-control {% if errors.address %}is-invalid{% endif %}" id="address"
-                name="address" {% if params %}value="{{ params.address }}" {% endif %}>
-            {% if errors.address %}
-            <div id="address1" class="invalid-feedback">
-                {{ errors.address }}
+            <label for="dateEnd" class="form-label">Дата конца восхождения</label>
+            <input type="datetime-local" class="form-control {% if errors.dateEnd %}is-invalid{% endif %}" id="dateEnd"
+                name="dateEnd" {% if params %}value="{{ params.dateEnd }}" {% endif %}>
+            {% if errors.dateEnd %}
+            <div id="dateEnd1" class="invalid-feedback">
+                {{ errors.dateEnd }}
             </div>
             {% endif %}
         </div>

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="p-5">
+    <h1 class="text-center pb-4">Список всех альпенистов по дате восхождения</h1>
+
+    <div class="container border-select py-2 my-2">
+        <form method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="dateStart" class="form-label">Дата начала восхождения</label>
+                <input type="datetime-local" class="form-control" id="dateStart"
+                    name="dateStart" {% if params %}value="{{ params.dateStart }}" {% endif %}>
+            </div>
+    
+            <div class="mb-3">
+                <label for="dateEnd" class="form-label">Дата конца восхождения</label>
+                <input type="datetime-local" class="form-control" id="dateEnd"
+                    name="dateEnd" {% if params %}value="{{ params.dateEnd }}" {% endif %}>
+            </div>
+    
+            <div class="mb-3 text-center">
+                <button type="submit" class="btn btn-primary">Поиск</button>
+            </div>
+        </form>
+    </div>
+
+    {% if climbers %}
+    <table class="table my-5">
+        <thead>
+            <tr>
+                <th>
+                    №
+                </th>
+                <th>
+                    Имя
+                </th>
+                <th>
+                    Адресс
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for climber in climbers %}
+            <tr>
+                <td>
+                    {{ loop.index }}
+                </td>
+                <td>
+                    {{ climber.fio }}
+                </td>
+                <td>
+                    {{ climber.address }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% else %}
+    <h2 class="p-2">Таких альпенистов нету</h2>
+    {% endif %}
+
+</div>
+{% endblock %}

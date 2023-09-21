@@ -2,7 +2,27 @@
 
 {% block content %}
 <div class="p-5">
-    <h1 class="text-center pb-4">Список всех групп</h1>
+    <h1 class="text-center pb-4">Список групп</h1>
+
+    <div class="container border-select py-2 my-2">
+        <form method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="dateStart" class="form-label">Дата начала восхождения</label>
+                <input type="datetime-local" class="form-control" id="dateStart"
+                    name="dateStart" {% if params %}value="{{ params.dateStart }}" {% endif %}>
+            </div>
+    
+            <div class="mb-3">
+                <label for="dateEnd" class="form-label">Дата конца восхождения</label>
+                <input type="datetime-local" class="form-control" id="dateEnd"
+                    name="dateEnd" {% if params %}value="{{ params.dateEnd }}" {% endif %}>
+            </div>
+    
+            <div class="mb-3 text-center">
+                <button type="submit" class="btn btn-primary">Поиск</button>
+            </div>
+        </form>
+    </div>
 
     {% if groups %}
     <table class="table">
@@ -16,9 +36,6 @@
                 </th>
                 <th>
                     Состав
-                </th>
-                <th>
-                    Действия
                 </th>
             </tr>
         </thead>
@@ -40,10 +57,6 @@
                     </ul>
                     {% endif %}
                 </td>
-                <td>
-                    <a class="btn btn-primary" href="{{ url_for('groups.add_climbers', group_id=group.id) }}">Добавить
-                        альпениста.</a>
-                </td>
 
             </tr>
             {% endfor %}
@@ -53,11 +66,6 @@
     {% else %}
     <h2 class="p-2">Групп пока нету</h2>
     {% endif %}
-
-    <div class="py-2">
-        <a class="btn btn-primary" href="{{ url_for('groups.add_new') }}">Добавить новую группу</a>
-        <a class="btn btn-primary" href="{{ url_for('groups.show_group') }}">Просмотр групп</a>
-    </div>
 
 </div>
 {% endblock %}

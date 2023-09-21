@@ -5,6 +5,11 @@
     padding: 2px;
 }
 
+.border-select {
+    border: 1.2px solid black;
+    border-radius: 10px;
+}
+
 .border-desc {
     border: 1.2px solid black;
     border-radius: 5px;
@@ -31,4 +36,8 @@
 
 .cover {
     height: 600px;
+}
+
+.display-yes {
+    display: block !important;
 }

@@ -27,6 +27,9 @@
                     Количество восхождений
                 </th>
                 <th>
+                    Количество альпенистов, побывавших на горе
+                </th>
+                <th>
                     Действие
                 </th>
             </tr>
@@ -53,7 +56,13 @@
                     {{ mountain.get_count_climbing or 0 }}
                 </td>
                 <td>
-                    Условные действия
+                    {{ mountain.get_count_climbes or 0 }}
+                </td>
+                <td>
+                    <a class="btn btn-primary" href="{{ url_for('mountains.show_groups', mountain_id=mountain.id) }}">Посмотреть группы</a>
+                    {% if mountain.get_count_climbing == 0 %}
+                    <a class="btn btn-primary" href="{{ url_for('mountains.edit_mouintain', mountain_id=mountain.id) }}">Изменить</a>
+                    {% endif %}
                 </td>
 
             </tr>

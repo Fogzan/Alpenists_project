@@ -41,7 +41,7 @@
                     ккк
                 </td>
                 <td>
-                    Условные действия
+                    <a class="btn btn-primary" href="{{ url_for('climbers.show_stat', climber_id=climber.id) }}">Посмотреть статистику</a>
                 </td>
 
             </tr>
@@ -55,6 +55,7 @@
 
     <div class="py-2">
         <a class="btn btn-primary" href="{{ url_for('climbers.add_new') }}">Добавить нового альпениста</a>
+        <a class="btn btn-primary" href="{{ url_for('climbers.show_climbers') }}">Просмотр альпенистов по датам</a>
     </div>
 
 </div>

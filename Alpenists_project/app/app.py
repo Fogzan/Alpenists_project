@@ -27,6 +27,8 @@ from mountains import bp as mountains_bp
 app.register_blueprint(mountains_bp)
 from climbers import bp as climbers_bp
 app.register_blueprint(climbers_bp)
+from climbing import bp as climbing_bp
+app.register_blueprint(climbing_bp)
 from groups import bp as groups_bp
 app.register_blueprint(groups_bp)
 from auth import bp as auth_bp, init_login_manager

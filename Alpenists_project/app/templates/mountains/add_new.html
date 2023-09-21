@@ -31,7 +31,7 @@
         <div class="mb-3">
             <label for="country" class="form-label">Страна</label>
             <input type="text" class="form-control {% if errors.country %}is-invalid{% endif %}" id="country"
-                name="country" {% if params %}value="{{ params.country }}" {% endif %}>
+                name="country" {% if params %}value="{{ params.country or params.coutry }}" {% endif %}>
             {% if errors.country %}
             <div id="country1" class="invalid-feedback">
                 {{ errors.country }}

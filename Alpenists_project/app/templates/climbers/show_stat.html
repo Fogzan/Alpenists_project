@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="p-5">
+    <h1 class="text-center pb-4">Статистика по горам для {{ climber_name }}</h1>
+
+    {% if stats %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    №
+                </th>
+                <th>
+                    Гора
+                </th>
+                <th>
+                    Количество восхождений
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for key, value in stats.items() %}
+            <tr>
+                <td>
+                    {{ loop.index }}
+                </td>
+                <td>
+                    {{ key }}
+                </td>
+                <td>
+                    {{ value }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% else %}
+    <h2 class="p-2">Статистики пока нету</h2>
+    {% endif %}
+
+
+</div>
+{% endblock %}
