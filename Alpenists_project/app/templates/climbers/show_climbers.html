@@ -2,20 +2,22 @@
 
 {% block content %}
 <div class="p-5">
-    <h1 class="text-center pb-4">Список всех альпенистов по дате восхождения</h1>
+    <h1 class="text-center pb-4">Список всех альпинистов по дате восхождения</h1>
 
     <div class="container border-select py-2 my-2">
         <form method="post" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="dateStart" class="form-label">Дата начала восхождения</label>
                 <input type="datetime-local" class="form-control" id="dateStart"
-                    name="dateStart" {% if params %}value="{{ params.dateStart }}" {% endif %}>
+                    name="dateStart" min="0000-01-01T00:00"
+                    max="9999-12-30T00:00" {% if params %}value="{{ params.dateStart }}" {% endif %}>
             </div>
     
             <div class="mb-3">
                 <label for="dateEnd" class="form-label">Дата конца восхождения</label>
                 <input type="datetime-local" class="form-control" id="dateEnd"
-                    name="dateEnd" {% if params %}value="{{ params.dateEnd }}" {% endif %}>
+                    name="dateEnd" min="0000-01-01T00:00"
+                    max="9999-12-30T00:00" {% if params %}value="{{ params.dateEnd }}" {% endif %}>
             </div>
     
             <div class="mb-3 text-center">

@@ -9,7 +9,7 @@
         <div class="mb-3 {% if errors.group %}border-error{% endif %}">
             <label for="climbers" class="form-label">Альпенист</label>
             <select class="form-select" aria-label="Default select example" id="select-climbers" name="select-climbers">
-                <option selected>Выберете альпениста</option>
+                <option selected>Выберите альпениста</option>
                 {% for climber in climbers %}
                 <option value="{{ climber.id }}">{{ climber.fio }}</option>
                 {% endfor %}

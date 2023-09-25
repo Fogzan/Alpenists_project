@@ -24,7 +24,7 @@
         <div class="mb-3 {% if errors.group %}border-error{% endif %}">
             <label for="mountain" class="form-label">Гора</label>
             <select class="form-select" aria-label="Default select example" id="select-mountain" name="select-mountain">
-                <option selected>Выберете гору</option>
+                <option selected>Выберите гору</option>
                 {% for mountain in mountains %}
                 <option value="{{ mountain.id }}" {% if params.mountain == mountain.id %}selected{% endif %}>{{ mountain.name }}</option>
                 {% endfor %}
@@ -40,7 +40,7 @@
         <div class="mb-3 {% if errors.group %}border-error{% endif %}">
             <label for="group" class="form-label">Группа</label>
             <select class="form-select" aria-label="Default select example" id="select-group" name="select-group">
-                <option value="" selected>Выберете группу</option>
+                <option value="" selected>Выберите группу</option>
                 {% for group in groups %}
                 <option value="{{ group.id }}" {% if params.group == group.id %}selected{% endif %}>{{ group.name }}</option>
                 {% endfor %}

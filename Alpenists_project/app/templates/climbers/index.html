@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="p-5">
-    <h1 class="text-center pb-4">Список всех альпенистов</h1>
+    <h1 class="text-center pb-4">Список всех альпинистов</h1>
 
     {% if climbers %}
     <table class="table">
@@ -16,9 +16,6 @@
                 </th>
                 <th>
                     Адресс
-                </th>
-                <th>
-                    Количество восхождений
                 </th>
                 <th>
                     Действие
@@ -38,9 +35,6 @@
                     {{ climber.address }}
                 </td>
                 <td>
-                    ккк
-                </td>
-                <td>
                     <a class="btn btn-primary" href="{{ url_for('climbers.show_stat', climber_id=climber.id) }}">Посмотреть статистику</a>
                 </td>
 
@@ -54,8 +48,8 @@
     {% endif %}
 
     <div class="py-2">
-        <a class="btn btn-primary" href="{{ url_for('climbers.add_new') }}">Добавить нового альпениста</a>
-        <a class="btn btn-primary" href="{{ url_for('climbers.show_climbers') }}">Просмотр альпенистов по датам</a>
+        <a class="btn btn-primary" href="{{ url_for('climbers.add_new') }}">Добавить нового альпиниста</a>
+        <a class="btn btn-primary" href="{{ url_for('climbers.show_climbers') }}">Просмотр альпинистов по датам</a>
     </div>
 
 </div>

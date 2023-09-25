@@ -31,12 +31,13 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent ms-auto">
+                    {% if current_user.is_authenticated %}
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link {% if request.endpoint == 'mountains.index' %}active{% endif %}" aria-current="page" href="{{ url_for('mountains.index') }}">Горы</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {% if request.endpoint == 'climbers.index' %}active{% endif %}" aria-current="page" href="{{ url_for('climbers.index') }}">Альпенисты</a>
+                            <a class="nav-link {% if request.endpoint == 'climbers.index' %}active{% endif %}" aria-current="page" href="{{ url_for('climbers.index') }}">Альпинисты</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {% if request.endpoint == 'groups.index' %}active{% endif %}" aria-current="page" href="{{ url_for('groups.index') }}">Группы</a>
@@ -45,7 +46,7 @@
                             <a class="nav-link {% if request.endpoint == 'climbing.index' %}active{% endif %}" aria-current="page" href="{{ url_for('climbing.index') }}">Восхождения</a>
                         </li>
                     </ul>
-
+                    {% endif %}
                     {% if current_user.is_authenticated %}
                     <div class="dropdown ms-auto">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -96,9 +97,9 @@
     </main>
 
     <footer class="bg-dark text-white d-flex align-items-center justify-content-center py-3">
-        Создатель: Мушкин Сергей Владимирович. Группа: 211-351
+        Создатели: Мушкин С.В. | Березина Е.А. | Жаков Р.С. | Вахонина А.В. | Группа: 211-351
         <br>
-        Git: https://github.com/Fogzan
+        Git: https://github.com/Fogzan/Alpenists_project.git
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
