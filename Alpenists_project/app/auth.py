@@ -44,8 +44,8 @@ def logout():
 
 @bp.route('/new_user', methods=['GET', 'POST'])
 def new_user():
+    information = {}
     if request.method == 'POST':
-        information = {}
         login = request.form.get('loginInput')
         password = request.form.get('passwordInput')
         password_return = request.form.get('passwordInput_return')
@@ -65,4 +65,5 @@ def new_user():
         flash('Пользователь успешно добавлен.', 'success')
         return redirect(url_for("index"))
     else:
-        return render_template('login.html', action="create")
+        return render_template('login.html', action="create", information=information)
+    
