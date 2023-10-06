@@ -1,0 +1,24 @@
+version: '3'
+services:
+  mysql_db:
+    container_name: mysql_db
+    hostname: mysql_db
+    image: mysql:8.1.0
+    ports:
+      - "32001:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_DATABASE=alpenists
+    restart: unless-stopped
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/:ro
+  wsgi_app:
+    container_name: wsgi_app
+    hostname: wsgi_app
+    build: 
+      dockerfile: Dockerfile.service
+    ports:
+      - 5000:5000
+    restart: always
+    depends_on:
+      - mysql_db
