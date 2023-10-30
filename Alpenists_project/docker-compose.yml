@@ -16,6 +16,7 @@ services:
     container_name: wsgi_app
     hostname: wsgi_app
     build: 
+      context: .
       dockerfile: Dockerfile.service
     ports:
       - 5000:5000

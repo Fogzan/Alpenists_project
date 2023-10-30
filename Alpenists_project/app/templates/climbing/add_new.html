@@ -56,7 +56,8 @@
         <div class="mb-3">
             <label for="dateStart" class="form-label">Дата начала восхождения</label>
             <input type="datetime-local" class="form-control {% if errors.dateStart %}is-invalid{% endif %}" id="dateStart"
-                name="dateStart" {% if params %}value="{{ params.dateStart }}" {% endif %}>
+                name="dateStart" min="0000-01-01T00:00"
+                max="9999-12-30T00:00" {% if params %}value="{{ params.dateStart }}" {% endif %}>
             {% if errors.dateStart %}
             <div id="dateStart1" class="invalid-feedback">
                 {{ errors.dateStart }}
@@ -67,7 +68,8 @@
         <div class="mb-3">
             <label for="dateEnd" class="form-label">Дата конца восхождения</label>
             <input type="datetime-local" class="form-control {% if errors.dateEnd %}is-invalid{% endif %}" id="dateEnd"
-                name="dateEnd" {% if params %}value="{{ params.dateEnd }}" {% endif %}>
+                name="dateEnd" min="0000-01-01T00:00"
+                max="9999-12-30T00:00" {% if params %}value="{{ params.dateEnd }}" {% endif %}>
             {% if errors.dateEnd %}
             <div id="dateEnd1" class="invalid-feedback">
                 {{ errors.dateEnd }}
