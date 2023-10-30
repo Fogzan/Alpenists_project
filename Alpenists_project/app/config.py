@@ -4,4 +4,6 @@ SECRET_KEY = 'e341e6698cb20dd889d040a9be7d5fc129cb06255f349bd6ea3f901afe8d61b4'
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 SQLALCHEMY_ECHO = True
 
+# Test for teamsity
+
 SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://root:secret@mysql_db:3306/alpenists'
