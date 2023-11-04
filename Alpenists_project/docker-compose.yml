@@ -11,7 +11,7 @@ services:
       - MYSQL_DATABASE=${MYSQL_DATABASE}
     restart: unless-stopped
     volumes:
-      - ./db:/docker-entrypoint-initdb.d/:ro
+      - mysql:/var/lib/mysql
   wsgi_app:
     container_name: wsgi_app
     hostname: wsgi_app

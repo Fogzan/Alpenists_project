@@ -1,14 +1,21 @@
 from flask import Flask, render_template, session, request, redirect, url_for, flash
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required
-from sqlalchemy import MetaData
+from sqlalchemy import MetaData, create_engine, text
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from config import CONFIG
+from dotenv import load_dotenv
+from os import getenv
+from config import CONFIG, DEV_CONFIG
 
 app = Flask(__name__)
 application = app
 
-app.config.from_object(CONFIG)
+if getenv('ENV') == 'production':
+    load_dotenv('.env')
+    app.config.from_object(CONFIG)
+else:
+    load_dotenv('../.env')
+    app.config.from_object(DEV_CONFIG)
 
 # Работа с БД
 convention = {
@@ -21,6 +28,11 @@ convention = {
 
 metadata = MetaData(naming_convention=convention)
 db = SQLAlchemy(app, metadata=metadata)
+
+# Создание базы данных при первичном запуске
+with create_engine(app.config['MYSQL_ENGINE_URI']).connect() as connection:
+    connection.execute(text(f"CREATE DATABASE IF NOT EXISTS {CONFIG.DB_NAME}"))
+
 migrate = Migrate(app, db)
 # ---------------------------
 
