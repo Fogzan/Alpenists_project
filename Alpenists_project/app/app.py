@@ -4,18 +4,13 @@ from sqlalchemy import MetaData, create_engine, text
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from dotenv import load_dotenv
-from os import getenv
-from config import CONFIG, DEV_CONFIG
+from os import getenv, environ
+from config import CONFIG
 
 app = Flask(__name__)
 application = app
-
-if getenv('ENV') == 'production':
-    load_dotenv('.env')
-    app.config.from_object(CONFIG)
-else:
-    load_dotenv('../.env')
-    app.config.from_object(DEV_CONFIG)
+load_dotenv('.env' if getenv('ENV') == 'production' else '../.env')
+app.config.from_object(CONFIG)
 
 # Работа с БД
 convention = {
@@ -28,10 +23,12 @@ convention = {
 
 metadata = MetaData(naming_convention=convention)
 db = SQLAlchemy(app, metadata=metadata)
+# print(environ)
+print(app.config)
 
 # Создание базы данных при первичном запуске
 with create_engine(app.config['MYSQL_ENGINE_URI']).connect() as connection:
-    connection.execute(text(f"CREATE DATABASE IF NOT EXISTS {CONFIG.DB_NAME}"))
+    connection.execute(text(f"CREATE DATABASE IF NOT EXISTS {app.config['DB_NAME']}"))
 
 migrate = Migrate(app, db)
 # ---------------------------
