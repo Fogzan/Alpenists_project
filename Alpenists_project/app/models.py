@@ -49,7 +49,7 @@ class Mountains(db.Model):
         return count_res
 
 
-# Альпенисты
+# Альпинисты
 class Climbers(db.Model):
     __tablename__ = 'climbers'
 
@@ -58,7 +58,7 @@ class Climbers(db.Model):
     address = db.Column(db.String(100), nullable=False)
     
 
-# Связь авльпенистов и групп (много ко многим)
+# Связь альпинистов и групп (много ко многим)
 class ClimbersGroups(db.Model):
     __tablename__ = 'climbers_groups'
 

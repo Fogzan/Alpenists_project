@@ -42,7 +42,7 @@ def add_new():
         db.session.add(climbers)
         db.session.commit()
 
-        flash('Альпенист успешно добавлен.', 'success')
+        flash('Альпинист успешно добавлен.', 'success')
         return redirect(url_for('climbers.index'))
 
     return render_template("climbers/add_new.html", errors=errors, params=params)

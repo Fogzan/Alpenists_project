@@ -57,12 +57,12 @@ def add_climbers(group_id):
         climber = request.form.get('select-climbers')
 
         if not climber.isdigit():
-            errors['climber'] = "Выберете альпениста."
+            errors['climber'] = "Выберете альпиниста."
 
         climbers_groups = ClimbersGroups.query.filter(ClimbersGroups.climbers_id == climber, ClimbersGroups.group_id == group_id).all()
 
         if climbers_groups:
-            errors['climber'] = "Такой альпенист уже есть в этой группе."
+            errors['climber'] = "Такой альпинист уже есть в этой группе."
 
         if errors:
             return render_template("groups/add_new_climber.html", errors=errors, climbers=climbers, groupName=group_name)
@@ -71,7 +71,7 @@ def add_climbers(group_id):
         db.session.add(climbers_groups)
         db.session.commit()
 
-        flash('Альпенист успешно добавлен к группе.', 'success')
+        flash('Альпинист успешно добавлен к группе.', 'success')
         return redirect(url_for('groups.index'))
 
 

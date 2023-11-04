@@ -4,12 +4,12 @@
 
 
 <div class="container">
-    <h1 class="py-3 text-center">Добавление альпениста к группе {{ groupName }}</h1>
+    <h1 class="py-3 text-center">Добавление альпиниста к группе {{ groupName }}</h1>
     <form method="post" enctype="multipart/form-data">
         <div class="mb-3 {% if errors.group %}border-error{% endif %}">
-            <label for="climbers" class="form-label">Альпенист</label>
+            <label for="climbers" class="form-label">Альпинист</label>
             <select class="form-select" aria-label="Default select example" id="select-climbers" name="select-climbers">
-                <option selected>Выберите альпениста</option>
+                <option selected>Выберите альпиниста</option>
                 {% for climber in climbers %}
                 <option value="{{ climber.id }}">{{ climber.fio }}</option>
                 {% endfor %}
