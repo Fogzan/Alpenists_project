@@ -3,11 +3,12 @@ from flask_login import LoginManager, UserMixin, login_user, logout_user, login_
 from sqlalchemy import MetaData
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from config import CONFIG
 
 app = Flask(__name__)
 application = app
 
-app.config.from_pyfile('config.py')
+app.config.from_object(CONFIG)
 
 # Работа с БД
 convention = {

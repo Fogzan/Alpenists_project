@@ -1,9 +1,11 @@
-SECRET_KEY = 'e341e6698cb20dd889d040a9be7d5fc129cb06255f349bd6ea3f901afe8d61b4'
+from os import getenv
+from dotenv import load_dotenv
+load_dotenv('.env' if getenv('ENV') == 'production' else '../.env')
 
-# SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://std_2059_alpenists_project:Qwerty123@std-mysql.ist.mospolytech.ru/std_2059_alpenists_project'
-SQLALCHEMY_TRACK_MODIFICATIONS = False
-SQLALCHEMY_ECHO = True
+class CONFIG():
+    SECRET_KEY = getenv('SECRET_KEY')
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SQLALCHEMY_ECHO = True
+    SQLALCHEMY_DATABASE_URI = f'mysql+mysqlconnector://{getenv("MYSQL_USER")}:{getenv("MYSQL_PASSWORD")}@{getenv("MYSQL_HOST")}:3306/{getenv("MYSQL_DATABASE")}'
 
 # Test for teamsity n6
-
-SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://root:secret@mysql_db:3306/alpenists'
