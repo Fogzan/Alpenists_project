@@ -10,4 +10,4 @@ class CONFIG():
     SQLALCHEMY_DATABASE_URI = f'mysql+mysqlconnector://{getenv("MYSQL_USER")}:{getenv("MYSQL_PASSWORD")}@{MYSQL_HOST}:3306/{DB_NAME}'
     MYSQL_ENGINE_URI = f'mysql+mysqlconnector://{getenv("MYSQL_USER")}:{getenv("MYSQL_PASSWORD")}@{MYSQL_HOST}:3306'
 
-# Test for teamsity n21
+# Test for teamsity n22
