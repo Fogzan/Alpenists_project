@@ -21,6 +21,7 @@ services:
   wsgi_app:
     container_name: wsgi_app
     hostname: wsgi_app
+    image: fogzan/alpenistsproject:latest
     build: 
       context: .
       dockerfile: Dockerfile.service
