@@ -15,8 +15,6 @@ services:
     - MYSQL_ROOT_PASSWORD=secret
     - PMA_PORT=3306
     - PMA_ARBITRARY=1
-  volumes:
-    - /sessions
   mysql_db:
     container_name: mysql_db
     hostname: mysql_db
