@@ -14,7 +14,7 @@ from climbing import climbing
 
 
 def test_main():
-   service = Service(executable_path=r'/home/user/Documents/chromedriver')
+   service = Service(executable_path='/home/user/Documents/chromedriver')
    options = webdriver.ChromeOptions()
    driver = webdriver.Chrome(service=service, options=options)
 
