@@ -15,7 +15,7 @@ from climbing import climbing
 def test_main():
    options = webdriver.ChromeOptions()
    options.add_experimental_option('excludeSwitches', ['enable-logging'])
-   driver = webdriver.Chrome(options=options)
+   driver = webdriver.Chrome(options=options, driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install())))
 
    driver.maximize_window()
    driver.implicitly_wait(5)
