@@ -40,7 +40,6 @@ def add_сlimbers(driver, name_group):
     try:
         count = 1
         while True: 
-            print(driver.find_element(By.XPATH, f"/html/body/main/div/table/tbody/tr[{count}]/td[2]").text)
             if name_group in driver.find_element(By.XPATH, f"/html/body/main/div/table/tbody/tr[{count}]/td[2]").text:
                 driver.find_element(By.XPATH, f"/html/body/main/div/table/tbody/tr[{count}]/td[4]/a").click()
                 break

@@ -8,6 +8,7 @@ from authorization import authorization
 from mountains import mountains
 from climbers import climbers
 from group import group
+from climbing import climbing
 
 options = webdriver.ChromeOptions()
 options.add_experimental_option("excludeSwitches", ["enable-logging"])
@@ -23,10 +24,12 @@ result_authorization = authorization(driver=driver)
 result_mountains = mountains(driver=driver)
 result_climbers = climbers(driver=driver)
 result_group = group(driver=driver)
+result_climbing = climbing(driver=driver)
 print(result_authorization)
 print(result_mountains)
 print(result_climbers)
 print(result_group)
+print(result_climbing)
 
 
 if not result_authorization:

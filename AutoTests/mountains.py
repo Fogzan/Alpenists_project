@@ -33,8 +33,6 @@ def create(driver):
 
         driver.find_element(By.XPATH, "/html/body/main/div/form/div[5]/button").click()
 
-        print(driver.find_element(By.XPATH, "/html/body/div/div").text)
-
         if "Гора успешно добавлена." in driver.find_element(By.XPATH, "/html/body/div/div").text :
             return True
         else:
