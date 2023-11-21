@@ -1,7 +1,6 @@
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
-from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 import time, sys
 from selenium.webdriver.common.by import By
@@ -14,17 +13,14 @@ from climbing import climbing
 
 
 def test_main():
-   options = Options()
-   options.add_argument('--headless')
-   options.add_argument('--no-sandbox')
-   options.add_argument('--disable-dev-shm-usage')
-   options.add_argument('--disable-extensions')
+   options = webdriver.ChromeOptions()
+   options.add_experimental_option("excludeSwitches", ["enable-logging"])
    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
 
    driver.maximize_window()
    driver.implicitly_wait(5)
    
-   driver.get(url='0.0.0.0:5000')
+   driver.get("http://192.168.0.139:5000")
 
    result_authorization = authorization(driver=driver)
    assert result_authorization == True, "Ошибка в регистрации и авторизации."
