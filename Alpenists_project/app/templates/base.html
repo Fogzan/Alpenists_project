@@ -80,7 +80,7 @@
 
     </header>
 
-    <div class="alerts-area">
+    <div class="alerts-area" id="alert-area">
         {% with messages = get_flashed_messages(with_categories=true) %}
         {% for category, msg in messages %}
         <div class="alert alert-{{ category }} alert-dismissible fade show m-0 rounded-0" role="alert">
