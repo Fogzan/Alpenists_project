@@ -37,7 +37,7 @@ def test_main():
    driver.maximize_window()
    driver.implicitly_wait(60000)
    
-   driver.get('https://habr.com/ru/articles/138590/')
+   driver.get('habr.com/ru/articles/138590/')
 
    assert True == True, "Testing"
    
