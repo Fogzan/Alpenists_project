@@ -15,7 +15,7 @@ from climbing import climbing
 def test_main():
    options = webdriver.FirefoxOptions()
    # options.add_experimental_option("excludeSwitches", ["enable-logging"])
-   driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=options)
+   driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
    # driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
 
    driver.maximize_window()
