@@ -37,7 +37,7 @@ def test_main():
    driver.maximize_window()
    driver.implicitly_wait(60)
    
-   driver.get("")
+   driver.get('https://yandex.ru')
  
    assert True == True, "Testing"
    
