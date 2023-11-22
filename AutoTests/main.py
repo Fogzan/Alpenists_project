@@ -35,7 +35,7 @@ def test_main():
    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
 
    driver.maximize_window()
-   driver.implicitly_wait(60)
+   driver.implicitly_wait(160)
    
    driver.get('https://yandex.ru')
 
