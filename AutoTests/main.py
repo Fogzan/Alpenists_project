@@ -35,9 +35,9 @@ def test_main():
    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
 
    driver.maximize_window()
-   driver.implicitly_wait(160)
+   driver.implicitly_wait(60)
    
-   driver.get('https://ya.ru')
+   driver.get('https://yandex.ru')
 
    assert True == True, "Testing"
    
