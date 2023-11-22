@@ -1,7 +1,7 @@
 import pytest
 from selenium import webdriver
-from selenium.webdriver.firefox.service import Service as FirefoxService
-from webdriver_manager.firefox import GeckoDriverManager
+from selenium.webdriver.chrome.service import Service as ChromeService
+from webdriver_manager.chrome import ChromeDriverManager
 import time, sys
 from selenium.webdriver.common.by import By
 
@@ -13,8 +13,8 @@ from climbing import climbing
 
 
 def test_main():
-   options = webdriver.FirefoxOptions()
-
+   options = webdriver.ChromeOptions()
+   options.add_experimental_option("excludeSwitches", ["enable-logging"])
    options.add_argument('--headless')
    options.add_argument('--no-sandbox')
    options.add_argument('--disable-dev-shm-usage')
@@ -32,11 +32,10 @@ def test_main():
    options.add_argument('--disable-background-networking')
    options.add_argument('--start-maximized')
    
-   driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=options)
-   # driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
+   driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
 
    driver.maximize_window()
-   driver.implicitly_wait(5)
+   driver.implicitly_wait(60)
    
    driver.get("http://192.168.0.139:5000")
 
