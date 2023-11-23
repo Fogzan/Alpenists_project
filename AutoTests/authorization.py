@@ -5,7 +5,7 @@ def authorization(driver):
     result_create = create(driver=driver)
     if not result_create[0]:
         return False
-    result_login = login(driver, data=data)
+    result_login = login(driver, data=result_create[1])
     if not result_login:
         return False
     
