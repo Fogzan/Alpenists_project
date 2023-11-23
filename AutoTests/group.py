@@ -8,11 +8,11 @@ rw = RandomWord(max_word_size=12,
                 include_special_chars=False)
 
 def group(driver):
-    # result_create = create(driver=driver)
-    # if not result_create[0]:
-    #     return False
-    # if not add_сlimbers(driver=driver, name_group=result_create[1]):
-    #     return False
+    result_create = create(driver=driver)
+    if not result_create[0]:
+        return False
+    if not add_сlimbers(driver=driver, name_group=result_create[1]):
+        return False
     return True
 
 def create(driver):

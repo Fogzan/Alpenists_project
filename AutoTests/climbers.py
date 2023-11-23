@@ -8,8 +8,8 @@ rw = RandomWord(max_word_size=6,
                 include_special_chars=False)
 
 def climbers(driver):
-    # if not create(driver=driver):
-    #     return False
+    if not create(driver=driver):
+        return False
     return True
 
 def create(driver):
