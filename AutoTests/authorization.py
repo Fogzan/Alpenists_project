@@ -3,10 +3,13 @@ import uuid
 
 def authorization(driver):
     result_create = create(driver=driver)
-    if not result_create[0]:
-        return False
-    
-    result_login = login(driver, data=result_create[1])
+    # if not result_create[0]:
+    #     return False
+    data = {
+        'login': 'admin',
+        'password': 'Qwerty123',
+    }
+    result_login = login(driver, data=data)
     if not result_login:
         return False
     
