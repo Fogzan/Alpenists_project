@@ -37,7 +37,7 @@ def test_main():
    driver.maximize_window()
    driver.implicitly_wait(60)
    
-   driver.get("ya.ru")
+   driver.get("http://192.168.0.107:5000")
 
    result_authorization = authorization(driver=driver)
    assert result_authorization == True, "Ошибка в регистрации и авторизации."
