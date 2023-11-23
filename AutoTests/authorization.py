@@ -39,7 +39,7 @@ def create(driver):
 
 def login(driver, data):
     try:
-        driver.get("http://192.168.0.139:5000/auth/login")
+        driver.get("http://192.168.0.107:5000/auth/login")
         input_username = driver.find_element(By.XPATH, "/html/body/main/div/form/div[1]/input")
         input_password = driver.find_element(By.XPATH, "/html/body/main/div/form/div[2]/input")
         input_username.send_keys(data['login'])
