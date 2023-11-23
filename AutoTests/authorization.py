@@ -3,12 +3,8 @@ import uuid
 
 def authorization(driver):
     result_create = create(driver=driver)
-    # if not result_create[0]:
-    #     return False
-    data = {
-        'login': 'admin',
-        'password': 'Qwerty123',
-    }
+    if not result_create[0]:
+        return False
     result_login = login(driver, data=data)
     if not result_login:
         return False
@@ -17,7 +13,7 @@ def authorization(driver):
 
 def create(driver):
     try:
-        driver.get("http://192.168.0.139:5000/auth/new_user")
+        driver.get("http://192.168.0.107:5000/auth/new_user")
         input_username = driver.find_element(By.XPATH, "/html/body/main/div/form/div[1]/input")
         input_password = driver.find_element(By.XPATH, "/html/body/main/div/form/div[2]/input")
         input_password_replay = driver.find_element(By.XPATH, "/html/body/main/div/form/div[3]/input")
