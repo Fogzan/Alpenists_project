@@ -8,8 +8,8 @@ rw = RandomWord(max_word_size=10,
                 include_special_chars=False)
 
 def mountains(driver):
-    # if not create(driver=driver):
-    #    return False
+    if not create(driver=driver):
+        return False
     # if not edit(driver=driver):
     #     return False
     return True
@@ -25,17 +25,18 @@ def create(driver):
         input_district = driver.find_element(By.ID, "district")
 
         randomize = rw.generate()
-
+        print(randomize)
         input_name.send_keys(randomize)
         input_height.send_keys(1000)
         input_country.send_keys(randomize)
         input_district.send_keys(randomize)
-
+        print("test1")
         driver.find_element(By.XPATH, "/html/body/main/div/form/div[5]/button").click()
-
+        print("test2")
         if "Гора успешно добавлена." in driver.find_element(By.XPATH, "/html/body/div/div").text :
             return True
         else:
+            print("test3")
             return False
     except:
         return False
