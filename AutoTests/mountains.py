@@ -43,7 +43,7 @@ def create(driver):
 
 def edit(driver):
     try:
-        driver.find_element(By.XPATH, "/html/body/main/div/table/tbody/tr[2]/td[8]/a[2]").click()
+        driver.find_element(By.XPATH, "/html/body/main/div/table/tbody/tr[1]/td[8]/a[2]").click()
 
         input_height = driver.find_element(By.ID, "height")
 
