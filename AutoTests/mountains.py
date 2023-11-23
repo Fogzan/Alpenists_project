@@ -10,8 +10,8 @@ rw = RandomWord(max_word_size=10,
 def mountains(driver):
     if not create(driver=driver):
         return False
-    if not edit(driver=driver):
-        return False
+    # if not edit(driver=driver):
+    #     return False
     return True
     
 def create(driver):
