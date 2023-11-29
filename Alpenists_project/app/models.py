@@ -107,4 +107,7 @@ class Climbing(db.Model):
             for climber in climbers:
                 climber.dateStart = self.date_start
             return climbers
-    
+
+def create_models(app):
+    with app.app_context():
+        db.create_all()

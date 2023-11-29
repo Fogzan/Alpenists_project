@@ -2,11 +2,27 @@ version: "3"
 services:
   mysql:
     image: mysql:8.1.0
+    hostname: mysql
     environment:
       - MYSQL_ROOT_PASSWORD=secret
     ports:
       - "3306:3306"
     volumes:
       - mysql:/var/lib/mysql
+  phpmyadmin:
+    container_name: phpmyadmin
+    hostname: phpmyadmin
+    image: phpmyadmin:5.2.1
+    restart: always
+    links:
+      - mysql
+    ports:
+      - 8080:80
+    environment:
+      - PMA_HOST=mysql
+      - MYSQL_USERNAME=root
+      - MYSQL_ROOT_PASSWORD=secret
+      - PMA_PORT=3306
+      - PMA_ARBITRARY=1
 volumes:
   mysql:
