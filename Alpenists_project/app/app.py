@@ -80,3 +80,9 @@ def test():
 @app.route('/metrics')
 def metrics():
     return generate_latest()
+
+
+
+
+
+# что не так!?
