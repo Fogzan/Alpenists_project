@@ -6,11 +6,20 @@ from flask_migrate import Migrate
 from dotenv import load_dotenv
 from os import getenv, environ
 from config import CONFIG
+from prometheus_flask_exporter import PrometheusMetrics
 
 app = Flask(__name__)
+metrics = PrometheusMetrics(app)
+metrics.start_http_server(5099)
 application = app
 load_dotenv('.env' if getenv('ENV') == 'production' else '../.env')
 app.config.from_object(CONFIG)
+
+common_counter = metrics.counter(
+    'by_endpoint_counter', 'Request count by endpoints',
+    labels={'endpoint': lambda: request.endpoint}
+)
+
 
 # Работа с БД
 convention = {
@@ -46,5 +55,6 @@ app.register_blueprint(auth_bp)
 init_login_manager(app)
 
 @app.route('/')
+@common_counter
 def index():
     return render_template('index.html')
