@@ -10,7 +10,7 @@ from prometheus_flask_exporter import PrometheusMetrics
 
 app = Flask(__name__)
 metrics = PrometheusMetrics(app)
-metrics.start_http_server(5099)
+# metrics.start_http_server(5099)
 application = app
 load_dotenv('.env' if getenv('ENV') == 'production' else '../.env')
 app.config.from_object(CONFIG)
