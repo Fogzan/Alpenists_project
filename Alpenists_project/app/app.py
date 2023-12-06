@@ -69,7 +69,7 @@ def index():
 
 @app.route('/test')
 @INDEX_TIME.time()
-def index():
+def test():
     path = str(request.path)
     verb = request.method
     label_dict = {"method": verb,
