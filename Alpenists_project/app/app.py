@@ -6,19 +6,21 @@ from flask_migrate import Migrate
 from dotenv import load_dotenv
 from os import getenv, environ
 from config import CONFIG
-from prometheus_flask_exporter import PrometheusMetrics
+from flask_prometheus_metrics import register_metrics
+from werkzeug.serving import run_simple
+from prometheus_client import make_wsgi_app
+from werkzeug.middleware.dispatcher import DispatcherMiddleware
 
 app = Flask(__name__)
-metrics = PrometheusMetrics(app)
-# metrics.start_http_server(5099)
+
+
+register_metrics(app, app_version="v0.1.2", app_config="staging")
+dispatcher = DispatcherMiddleware(app.wsgi_app, {"/metrics": make_wsgi_app()})
+run_simple(hostname="0.0.0.0", port=5000, application=dispatcher)
+
 application = app
 load_dotenv('.env' if getenv('ENV') == 'production' else '../.env')
 app.config.from_object(CONFIG)
-
-common_counter = metrics.counter(
-    'by_endpoint_counter', 'Request count by endpoints',
-    labels={'endpoint': lambda: request.endpoint}
-)
 
 
 # Работа с БД
@@ -55,6 +57,5 @@ app.register_blueprint(auth_bp)
 init_login_manager(app)
 
 @app.route('/')
-@common_counter
 def index():
     return render_template('index.html')
