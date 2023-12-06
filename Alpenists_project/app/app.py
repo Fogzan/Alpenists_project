@@ -6,17 +6,18 @@ from flask_migrate import Migrate
 from dotenv import load_dotenv
 from os import getenv, environ
 from config import CONFIG
-from flask_prometheus_metrics import register_metrics
-from werkzeug.serving import run_simple
-from prometheus_client import make_wsgi_app
-from werkzeug.middleware.dispatcher import DispatcherMiddleware
+
+from prometheus_client import generate_latest
+from prometheus_client import Counter
+from prometheus_client import Summary
 
 app = Flask(__name__)
 
+# Create a metric to track time spent and requests made.
+INDEX_TIME = Summary('index_request_processing_seconds', 'DESC: INDEX time spent processing request')
 
-register_metrics(app, app_version="v0.1.2", app_config="staging")
-dispatcher = DispatcherMiddleware(app.wsgi_app, {"/metrics": make_wsgi_app()})
-run_simple(hostname="0.0.0.0", port=5000, application=dispatcher)
+# Create a metric to count the number of runs on process_request()
+c = Counter('requests_for_host', 'Number of runs of the process_request method', ['method', 'endpoint'])
 
 application = app
 load_dotenv('.env' if getenv('ENV') == 'production' else '../.env')
@@ -57,5 +58,25 @@ app.register_blueprint(auth_bp)
 init_login_manager(app)
 
 @app.route('/')
+@INDEX_TIME.time()
 def index():
+    path = str(request.path)
+    verb = request.method
+    label_dict = {"method": verb,
+                 "endpoint": path}
+    c.labels(**label_dict).inc()
     return render_template('index.html')
+
+@app.route('/test')
+@INDEX_TIME.time()
+def index():
+    path = str(request.path)
+    verb = request.method
+    label_dict = {"method": verb,
+                 "endpoint": path}
+    c.labels(**label_dict).inc()
+    return render_template('index.html')
+
+@app.route('/metrics')
+def metrics():
+    return generate_latest()
