@@ -7,3 +7,4 @@
 > app/ $ `flask db upgrade`
 - Запуск приложения:
 > app/ $ `flask run`
+
