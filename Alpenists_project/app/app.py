@@ -45,7 +45,7 @@ with create_engine(app.config['MYSQL_ENGINE_URI']).connect() as connection:
 migrate = Migrate(app, db)
 
 from models import create_models
-create_models(app)
+# create_models(app)
 # ---------------------------
 
 from mountains import bp as mountains_bp
