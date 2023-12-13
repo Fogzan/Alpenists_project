@@ -4,7 +4,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from flask_login import UserMixin
 from flask import current_app
 from app import db
-
+from sqlalchemy.sql import func
 
 # Пользователи
 class Users(db.Model, UserMixin):
@@ -13,6 +13,7 @@ class Users(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     login = db.Column(db.String(100), unique=True, nullable=False)
     password_hash = db.Column(db.String(200), nullable=False)
+    created_at = db.Column(db.DateTime, server_default=func.now(), nullable=False)
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
