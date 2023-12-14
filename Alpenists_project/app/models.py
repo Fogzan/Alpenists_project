@@ -86,6 +86,7 @@ class Climbing(db.Model):
     date_end = db.Column(db.DateTime, nullable=False)
     mountains_id = db.Column(db.Integer, db.ForeignKey('mountains.id'), nullable=False)
     group_id = db.Column(db.Integer, db.ForeignKey('groups.id'), nullable=False)
+    desc = db.Column(db.String(200), nullable=True)
 
     @property
     def get_mountains_name(self):
