@@ -14,6 +14,7 @@ class Users(db.Model, UserMixin):
     login = db.Column(db.String(100), unique=True, nullable=False)
     password_hash = db.Column(db.String(200), nullable=False)
     created_at = db.Column(db.DateTime, server_default=func.now(), nullable=False)
+    type_user = db.Column(db.String(100)) 
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
